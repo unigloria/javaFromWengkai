@@ -9,3 +9,458 @@
 //	 }
 //}
 //
+
+//2.1时间换算
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int BJT = in.nextInt();
+//		int UTC = 0;
+//		if (BJT >= 800)
+//		{
+//			UTC = BJT-800;
+//		}
+//		else 
+//		{
+//			UTC = BJT+2400-800;
+//		}
+//		System.out.println(UTC);		
+//	 }
+//}
+
+
+//2.2信号报告
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int rawdata = in.nextInt();
+//		int R = rawdata/10;
+//		int S = rawdata%10;
+//		switch(S){
+//		case 1:
+//			System.out.print("Faint signals, barely perceptible, ");
+//			break;
+//		case 2:
+//			System.out.print("Very weak signals, ");
+//			break;
+//		case 3:
+//			System.out.print("Weak signals, ");
+//			break;
+//		case 4:
+//			System.out.print("Fair signals, ");
+//			break;
+//		case 5:
+//			System.out.print("Fairly good signals, ");
+//			break;
+//		case 6:
+//			System.out.print("Good signals, ");
+//			break;
+//		case 7:
+//			System.out.print("Moderately strong signals, ");
+//			break;
+//		case 8:
+//			System.out.print("Strong signals, ");
+//			break;
+//		case 9:
+//			System.out.print("Extremely strong signals, ");
+//			break;
+//		}
+//		
+//		switch(R){
+//		case 1:
+//			System.out.print("unreadable.");
+//			break;
+//		case 2:
+//			System.out.print("barely readable, occasional words distinguishable.");
+//			break;
+//		case 3:
+//			System.out.print("readable with considerable difficulty.");
+//			break;
+//		case 4:
+//			System.out.print("readable with practically no difficulty.");
+//			break;
+//		case 5:
+//			System.out.print("perfectly readable.");
+//			break;
+//		}
+//	 }
+//}
+
+
+//3.1奇偶个数
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int number = in.nextInt();
+//		int odd = 0;
+//		int even = 0;
+//		while( number != -1)
+//		{			
+//			if (number%2 == 0)
+//			{
+//				even += 1;
+//			}
+//			else
+//			{
+//				odd += 1;
+//			}
+//			number = in.nextInt();
+//		}
+//		System.out.print(odd+" "+even);	
+//	 }
+//}
+
+
+
+//3.2 数字特征值
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int number = in.nextInt();
+//		int digit = 0;
+//		int count = 0;
+//		int result = 0;
+//		int second = 1;
+//		while(number>0)
+//		{
+//			digit = number%10;
+//			number = number/10;
+//			count += 1;
+//			if (digit%2 == count%2)
+//			{
+//				result += second;
+//			}
+//			second *= 2;
+//		}
+//		System.out.println(result);
+//	 }
+//}
+
+
+//3.3 素数和
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int n = in.nextInt();
+//		int m = in.nextInt();
+//		int result = 0;	
+////		挑选素数
+//		int count = 0;
+//		int number = 2;		
+//		for (int i = number; count < m ; i++)
+//		{
+//			boolean isPrime = true;
+//			for (int j = 2; j<i ; j++)
+//			{
+//				if (i%j == 0)
+//				{
+//					isPrime = false;
+//					break;
+//				}
+//			}
+//			if (isPrime == true || i == 2)
+//			{
+//				count += 1;
+////			System.out.println("第"+count+"个素数为："+i);
+//				if (count>=n)
+//				{
+//					result += i;
+////				System.out.println("i:"+i);
+//				}
+//			}		
+//		}
+//		System.out.println(result);
+//	 }
+//}
+
+
+//3.4念整数
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int number = in.nextInt();
+//		
+//		if (number==0)
+//		{
+//			System.out.print("ling");
+//		}
+//		
+//		else
+//		{
+//			if (number<0)
+//			{
+//				System.out.print("fu ");
+//				number = -number;
+//			}
+//			
+//			int bernum = 0;
+//			int digit = 0;
+//			int count = 0;
+//			
+//			while(number>0)
+//			{
+//				digit = number%10;
+//				number /= 10;
+//				count += 1;
+//				bernum = bernum*10 + digit;
+//			}
+////			System.out.println(bernum);
+//			
+//			for (int i = count; i > 0 ; i--)
+//			{			
+//				digit = bernum%10;
+//				bernum /= 10;
+//                switch (digit){
+//					case 0:
+//						System.out.print("ling");
+//						break;
+//					case 1:
+//						System.out.print("yi");
+//						break;
+//					case 2:
+//						System.out.print("er");
+//						break;
+//					case 3:
+//						System.out.print("san");
+//						break;
+//					case 4:
+//						System.out.print("si");
+//						break;
+//					case 5:
+//						System.out.print("wu");
+//						break;
+//					case 6:
+//						System.out.print("liu");
+//						break;
+//					case 7:
+//						System.out.print("qi");
+//						break;
+//					case 8:
+//						System.out.print("ba");
+//						break;
+//					case 9:
+//						System.out.print("jiu");
+//						break;
+//					}
+//                    if (i>1)
+//                    {
+//                    	System.out.print(" ");
+//                    }					
+//				}				
+//			}			
+//		}	
+//	}
+
+
+
+//4.1多项式加法
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		//构建数组，以元素值为系数，元素脚标为幂次
+//		int[] list = new int[101];
+//      //分别记录幂次和系数	
+//      int MC, XX; 
+//      //循环两次读入两个多项式
+//		for (int i = 0; i<2 ; i++)
+//		{
+//			do
+//			{
+//				MC = in.nextInt();
+//				XX = in.nextInt();	
+//				list[MC] += XX;							
+//			}while (MC!=0);			
+//		}
+//		//用tag1记录目前要输出的是否是第一个值（第一个值不输出+号）
+//		boolean tag1 = true;
+//		for (int i=100; i>=0; i--)
+//		{
+//			//遍历数组list，系数不为0是进行输出
+//			if (list[i]!=0) 
+//			{
+//				//考查是否输出+号
+//				if(tag1 == false && list[i]>0)
+//				{
+//					System.out.print("+");
+//				}
+//				//输出系数，系数为1或-1时不输出，但是常数项系数为1或-1时仍输出
+//				if((list[i]!=1 && list[i]!=-1) || i==0)
+//				{
+//					System.out.print(list[i]);
+//				}
+//				if(list[i]==-1)//系数为-1时输出负号
+//				{
+//					System.out.print("-");
+//				}
+//				//输出x
+//				if(i!=0)
+//				{
+//					System.out.print("x");
+//				}
+//				//输出幂次
+//				if(i>1)
+//				{
+//					System.out.print(i);
+//				}
+//              //已经输出过值，则tag1的值改为false
+//				tag1 = false;
+//			}
+//		}
+//		if(tag1 == true) //所有系数均为0的情况，输出0
+//		{
+//			System.out.print(0);
+//		}
+//	 }	
+//}	
+
+
+//4.2井字棋
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int line = in.nextInt();
+//		int[][] tic = new int[line][line];
+//		int getnumber;
+//		for (int i = 0; i<line; i++)
+//		{
+//			for (int j = 0; j<line; j++)
+//			{
+//				getnumber = in.nextInt();
+//				tic[i][j] = getnumber;			
+//			}
+//		}
+////      测试录入是否正确		
+////		for (int i = 0; i<line; i++)
+////		{
+////			for (int j = 0; j<line; j++)
+////			{
+////				System.out.print(tic[i][j]);
+////			}
+////			System.out.println("");
+////		}
+//		
+//		//考查每行是否存在获胜情况
+//		boolean isDone = false;
+//		for (int i = 0; i<line; i++)
+//		{
+//			boolean check = true;
+//			for (int j = 1; j<line; j++)
+//			{
+//				if (tic[i][j]!=tic[i][j-1])
+//				{
+//					check = false;
+//					break;
+//				}
+//			}
+//			if (check == true)
+//			{
+//				if(tic[i][0]==0)
+//				{
+//					System.out.println("O");
+//				}
+//				else
+//				{
+//					System.out.println("X");
+//				}
+//				isDone = true;
+//				break;				
+//			}
+//		}
+//		
+//		//没有获胜情况的话，继续考查每列是否存在获胜情况
+//		if (isDone == false)
+//		{
+//			for (int i = 0; i<line; i++)
+//			{
+//				boolean check = true;
+//				for (int j = 1; j<line; j++)
+//				{
+//					if (tic[j][i]!=tic[j-1][i])
+//					{
+//						check = false;
+//						break;
+//					}
+//				}
+//				if (check == true)
+//				{
+//					if(tic[0][i]==0)
+//					{
+//						System.out.println("O");
+//					}
+//					else
+//					{
+//						System.out.println("X");
+//					}
+//					isDone = true;
+//					break;					
+//				}
+//			}
+//		}
+//		
+//		//仍然没有获胜情况的话，继续考查左对角线是否存在获胜情况
+//		if(isDone == false)
+//		{
+//			boolean check = true;
+//			for(int i = 1; i<line; i++)
+//			{
+//				if(tic[i][i]!=tic[i-1][i-1])
+//				{
+//					check = false;
+//					break;
+//				}		
+//			}
+//			if (check==true)
+//			{
+//				if(tic[0][0]==0)
+//				{
+//					System.out.println("O");
+//				}
+//				else
+//				{
+//					System.out.println("X");
+//				}
+//				isDone = true;
+//			}
+//		}
+//			
+//			//仍然没有获胜情况的话，继续考查右对角线是否存在获胜情况	
+//		if(isDone == false)
+//		{
+//			boolean check = true;
+//			for(int i = 1; i<line; i++)
+//			{
+//				if(tic[i][line-1-i]!=tic[i-1][line-1-i+1])//右对角线两脚标和为line-1
+//				{
+//					check = false;
+//					break;
+//				}				
+//			}
+//			if (check == true)
+//			{
+//				
+//				if(tic[0][line-1]==0)
+//				{
+//					System.out.println("O");
+//				}
+//				else
+//				{
+//					System.out.println("X");
+//				}
+//				isDone = true;
+//			}		
+//		}
+//		//仍然没有获胜情况的话，输出nil
+//		if(isDone == false)
+//		{
+//			System.out.println("NIL");
+//		}		
+//	 }	
+//}	
