@@ -464,3 +464,105 @@
 //		}		
 //	 }	
 //}	
+
+//5.1分解质因数
+//public class Main {
+//	public static boolean isPrime(int a)
+//	{
+//		int number = a;
+//		boolean isPrime = true;
+//		for(int i = 2; i<a; i++)
+//		{
+//			if(number%i==0)
+//			{
+//				isPrime = false;
+//				break;
+//			}
+//		}
+//		if (a==2)
+//		{
+//			isPrime = true;
+//		}		
+//		return isPrime;
+//	}
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		
+//		int number = in.nextInt();
+//		System.out.print(number+"=");
+//		
+//		if(isPrime(number))
+//		{
+//			System.out.print(number);
+//		}
+//		else
+//		{
+//			for(int i = 2; i<=number; i++)
+//			{
+//				if(isPrime(i))
+//				{
+//					while(number%i==0 )
+//					{
+//						number/=i;
+//						System.out.print(i);
+//						if (number != 1 )
+//						{
+//							System.out.print("x");
+//						}
+//					}
+//				}
+//			}			
+//		}
+//   }	
+//}
+
+
+//5.2找完数
+//public class Main {
+//	
+//	public static boolean isPerfect(int a)
+//	{
+//		boolean isPerfect = false;
+//		int number = a;
+//		int sum = 1;
+//		for(int i = 2; i<number ; i++)
+//		{
+//			if(number%i==0)
+//			{
+//				sum+=i;
+//			}
+//		}
+//		if(sum == number && number!=1)
+//		{
+//			isPerfect = true;
+//		}		
+//		return isPerfect;
+//	}	
+//	
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int n = in.nextInt();
+//		int m = in.nextInt();
+//		boolean tag1 = true;
+//		for (int i = n; i<=m ; i++)
+//		{
+//			if(isPerfect(i))
+//			{
+//				if(tag1)
+//				{
+//					System.out.print(i);
+//					tag1 = false;
+//				}
+//				else
+//				{
+//					System.out.print(" "+i);
+//				}			
+//			}			
+//		}
+//		if(tag1)
+//		{
+//			System.out.print("NIL");
+//		}					
+//   }	
+//}
