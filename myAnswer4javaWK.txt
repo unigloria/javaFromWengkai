@@ -1,0 +1,11 @@
+//1.1温度转换
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		int F = in.nextInt();
+//		int C = (int)((F-32)/(9.0/5));
+//		System.out.println(C);		
+//	 }
+//}
+//
