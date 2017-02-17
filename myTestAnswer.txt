@@ -567,3 +567,450 @@
 //		}					
 //   }	
 //}
+
+//6.1单词长度
+//  public class Main {
+//	
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		String word;
+//		boolean isEnd = false;
+//		do
+//		{
+//			word = in.next();
+//			if (word.endsWith("."))
+//			{
+//				isEnd = true;
+//			}
+//			if (isEnd == false)
+//			{
+//				System.out.print(word.length());
+//				System.out.print(" ");
+//			}
+//			else
+//			{
+//				System.out.print(word.length()-1);
+//			}
+//		} while(isEnd == false);		
+//   }	
+//}
+
+
+//6.2GPS数据处理
+//  public class Main {
+////	验证首字段的函数
+//	public static boolean isGPRMC(String gps)
+//	{
+//		boolean isgprmc = false;
+//		String s = gps;
+//		if (s.startsWith("$GPRMC"))
+//		{
+//			isgprmc = true;
+//		}
+//		return isgprmc;	
+//	}
+//	
+////	校验和的函数
+//	public static boolean checkSum(String gps)
+//	{
+//		boolean isEqual = false;
+//		String s = gps;
+//		int left = s.indexOf("$");
+//		int right = s.indexOf("*");
+//		int DifOr = 0;
+//		for(int i = left+1; i<right; i++)
+//		{
+//			DifOr = DifOr^s.charAt(i);
+//		}
+//		int result = DifOr%65536;
+//		int checkSum = Integer.parseInt(s.substring(right+1), 16);
+//		if(result==checkSum)
+//		{
+//			isEqual = true;
+//		}
+//		return isEqual;
+//	}
+//	
+//	
+////	验证A的函数
+//	public static boolean isA (String gps)
+//	{
+//		boolean isA = false;
+//		String s = gps;
+//		int loc1 = s.indexOf(",");
+//		int loc2 = s.indexOf(",", loc1+1);
+//		if (s.charAt(loc2+1)=='A')
+//		{
+//			isA = true;
+//		}		
+//		return isA;
+//	}
+//
+////获取时间字段
+//	public static String rawtime(String gps) 
+//	{
+//		String rawtime = "";
+//		String s = gps;
+//		int left = s.indexOf(",");
+//		int right = s.indexOf(".");
+//		rawtime = s.substring(left+1, right);	
+//		return rawtime;
+//	}
+//	
+////转化为北京时间按照格式进行输出
+//	public static void bjt(String rawtime)
+//	{
+//		String s = rawtime;
+//		int hh = Integer.parseInt(s.substring(0, 2));
+//		int mm = Integer.parseInt(s.substring(2, 4));
+//		int ss = Integer.parseInt(s.substring(4));
+//		if (hh>=16)
+//		{
+//			hh=hh+8-24;
+//		}
+//		else
+//		{
+//			hh=hh+8;
+//		}
+//		System.out.printf("%02d:%02d:%02d", hh,mm,ss);
+//	}
+//	
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		String gps = in.nextLine();
+//		String rawtime = "";
+//		while (gps.equals("END")==false)
+//		{
+//			if (isGPRMC(gps) && checkSum(gps) && isA(gps))
+//			{
+//				rawtime = rawtime(gps);
+//			}
+//			gps = in.nextLine();
+//		}
+//		bjt(rawtime);
+//		
+//    }	
+//}
+
+
+//7.1分数
+//    public class Main {
+//	
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		Fraction a = new Fraction(in.nextInt(), in.nextInt());
+//		Fraction b = new Fraction(in.nextInt(),in.nextInt());
+//		a.print();
+//		b.print();
+//		a.plus(b).print();
+//		a.multiply(b).plus(new Fraction(5,6)).print();
+//		a.print();
+//		b.print();
+//		in.close();
+//	}
+//}
+//
+//class Fraction {
+//	public int son = 0;
+//	public int mother = 1;
+//	
+//	Fraction(int a, int b){
+//		son = a;
+//		mother = b;
+//	}
+//	
+//	public int max(int a, int b){
+//    	int big;
+//    	int small;
+//    	int temp = 0;
+//    	if (a>=b)
+//    	{
+//    		big = a;
+//    		small = b;
+//    	}
+//    	else
+//    	{
+//    		big = b;
+//    		small = a;
+//    	}	    	
+//    	while( small!= 0 )
+//    	{	
+//    		temp = big%small;
+//    		big = small;
+//    		small = temp;
+//    	}
+//    	return big;
+//	}
+//	
+//	public double toDouble(){
+//		double db = (double)son/mother;		
+//		return db;
+//	}
+//	
+//	public Fraction plus(Fraction r){
+//		
+//		int newson = son*r.mother+mother*r.son;
+//		int newmom = mother*r.mother;
+//		Fraction result = new Fraction(newson,newmom);	
+//		return result;
+//	}
+//	
+//	public Fraction multiply(Fraction r)
+//	{
+//		int newson = son*r.son;
+//		int newmom = mother*r.mother;
+//		Fraction result = new Fraction(newson,newmom);
+//		return result;
+//	}
+//	
+//	void print(){
+//		int max = max(son,mother);
+//		son = son/max;
+//		mother = mother/max;
+//		if (son==mother)
+//		{
+//			System.out.println(1);
+//		}
+//		else
+//		{
+//			System.out.println(son+"/"+mother);
+//		}
+//	}
+//}
+
+
+//7.2带秒显的时钟
+//public class Main {
+//	
+//	public static void main(String[] args) {
+//		java.util.Scanner in = new java.util.Scanner(System.in);
+//		Clock clock = new Clock(in.nextInt(), in.nextInt(), in.nextInt());
+//		clock.tick();
+//		System.out.println(clock);
+//		in.close();
+//	}	
+//}
+//
+//class Display {
+//	private int value = 0;
+//	private int limit = 0;
+//	
+//	
+//	public Display(int a)
+//	{
+//		limit = a;		
+//	}
+//	
+//	public void setValue(int a)
+//	{
+//		value = a;
+//	}
+//	public int getValue()
+//	{
+//		return value;
+//	}
+//	
+//	public void increase()
+//	{		
+//			value++;
+//			if (value == limit)
+//			{
+//				value = 0;
+//			}
+//	}	
+//}
+//
+//class Clock 
+//	{
+//	private Display hh = new Display(24);
+//	private Display mm = new Display(60);
+//	private Display ss = new Display(60);
+//	
+//	
+//	public Clock(int hour, int minute, int second)
+//	{
+//		hh.setValue(hour);
+//		mm.setValue(minute);
+//		ss.setValue(second);
+//	}
+//	
+//	public void tick()
+//	{
+//		ss.increase();
+//		if (ss.getValue() == 0){
+//			mm.increase();
+//			if (mm.getValue() == 0)
+//			{
+//				hh.increase();
+//			}
+//		}
+//	}
+//	
+//	public String toString()
+//	{
+//		return String.format("%02d:%02d:%02d",hh.getValue(),mm.getValue(),ss.getValue());
+//	}	
+//}
+
+
+//8.1里程
+//public class Main {
+//	
+//	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+////		city cityA = new city();
+////		cityA.add();
+//////		milebox mileA = new milebox(cityA.getNum());
+////		milebox mileA = new milebox();
+//////		mileA.setbox();
+////		mileA.setBox(cityA.getNum());
+////		int a = cityA.getIndex(in.next());
+////		int b = cityA.getIndex(in.next());
+//////		System.out.println(mileA.getMiles(a, b));	
+////		System.out.println(mileA.getmile(a, b));
+//		
+//		city cityA = new city();
+//		String cityName = in.next();
+//		while(!cityName.equals("###"))
+//		{
+//			cityA.add(cityName);
+//			cityName = in.next();
+//		}
+//		mile mileA = new mile();
+//		int size = cityA.getNum();
+//		for (int i = 0; i<size; i++)
+//		{
+//			for (int j = 0; j<size; j++)
+//			{
+//				String s = i+"x"+j;
+//				mileA.add(s, in.nextInt());
+//			}
+//		}
+//		int a = cityA.getIndex(in.next());
+//		int b = cityA.getIndex(in.next());
+//		System.out.println(mileA.getMile(a+"x"+b));
+//		
+//		
+//	}
+//}
+//
+//class city{
+//	private ArrayList<String> cities = new ArrayList<String>();
+//	
+//	public void add(String s)
+//	{
+//		cities.add(s);
+//	}
+//	
+//	public int getNum()
+//	{
+//		return cities.size();
+//	}
+//	
+//	public int getIndex(String s)
+//	{
+//		return cities.indexOf(s);
+//	}
+//}
+//
+//class mile{
+//	private HashMap<String, Integer> miles = new HashMap<String, Integer>();
+//	
+//	public void add(String s, int a)
+//	{
+//		miles.put(s, a);
+//	}
+//	
+//	public int getMile(String s)
+//	{
+//		return miles.get(s);
+//	}
+//}
+//
+//
+//
+////class city{
+////	private ArrayList<String> cities = new ArrayList<String>();
+////	
+////	public void add()
+////	{
+////		Scanner in = new Scanner(System.in);
+////		String cityname = in.next();
+////		while(!cityname.equals("###"))
+////		{
+////			cities.add(cityname);
+////			cityname = in.next();
+////		}
+////	}
+////	
+////	public int getNum()
+////	{
+////		return cities.size();
+////	}
+////	
+////	public int getIndex(String s)
+////	{
+////		
+////		return cities.indexOf(s);
+////	}
+////	
+////}
+////
+////class milebox{
+////	private HashMap<String, Integer> miles = new HashMap<String, Integer>();
+////	
+////	public milebox()
+////	{
+////		
+////	}
+////	
+////	public void setBox(int a)
+////	{
+////		Scanner in = new Scanner(System.in);
+////		for (int i=0; i<a; i++)
+////		{
+////			for (int j=0; j<a; j++)
+////			{
+////				String s = i+"x"+j;
+////				miles.put(s, in.nextInt());
+////			}
+////		}
+////	}
+////	
+////	public int getmile(int a, int b)
+////	{
+////		return miles.get(a+"x"+b);
+////	}
+////}
+//
+//
+////class milebox{
+////	private int size = 0;
+////	int[][] box;
+////	
+////	
+////	public milebox(int a)
+////	{
+////		size = a;
+////		box = new int[size][size];
+////	}
+////	
+////	public void setbox()
+////	{
+////		Scanner in = new Scanner(System.in);
+////		for (int i = 0; i<size; i++)
+////		{
+////			for (int j = 0; j<size; j++)
+////			{
+////				int mile = in.nextInt();
+////				box[i][j] = mile;
+////			}
+////		}
+////	}
+////	
+////	public int getMiles(int a, int b)
+////	{
+////		return box[a][b];
+////	}		
+////}
+//
