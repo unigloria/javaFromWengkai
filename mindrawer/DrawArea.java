@@ -71,18 +71,28 @@ public class DrawArea extends JPanel{
     public void setColor(Color color)
     {
     	this.color = color; 
+    	System.out.println("this is setColor, color:"+color.toString());
+    	System.out.println("isSelected:"+isSelected);
+    	System.out.println("Selected:"+selected);
 //    	System.out.println("this is setColor");//测试用
-    	if (shapes.size()>1)
+//    	if (shapes.size()>1)
+//    	{
+//    		shapes.get(shapes.size()-1).setColor(color);
+//    	}
+    	if (isSelected)
+    	{
+    		shapes.get(selected).setColor(color);
+    		System.out.println("现在在改变对象颜色");
+    		repaint();
+    	}
+    	else if (shapes.size()>0)
     	{
     		shapes.get(shapes.size()-1).setColor(color);
-    	}    	
+    		System.out.println("现在在改变公共颜色");
+    	}
     }
     
-    public void changeColor(Color color)
-    {
-//    	System.out.println("this is changeColor");//测试用
-    	shapes.get(selected).setColor(color);
-    }
+
 
 	public void setStroke(int stroke)
 	{
@@ -98,7 +108,7 @@ public class DrawArea extends JPanel{
 		currentCmd = i;
 	}
 	
-	boolean isSelected(int x, int y)
+	void setSelected(int x, int y)
 	{
 		for (int i=shapes.size()-1; i>=0; i--)
 		{
@@ -106,10 +116,21 @@ public class DrawArea extends JPanel{
 			{
 				selected = i;
 				isSelected = true;
+			}
+		}
+		
+	}
+	
+	boolean isSelected(int x, int y)
+	{
+		for (int i=shapes.size()-1; i>=0; i--)
+		{
+			if (shapes.get(i).isInside(x, y))
+			{
 				return true;
 			}
 		}
-		return false;		
+		return false;
 	}
 	
 
@@ -119,7 +140,7 @@ class MousePressRelease extends MouseAdapter  {
 	public void mousePressed(MouseEvent me){
 		// 按下鼠标
 		requestFocus(true);
-		isSelected(me.getX(), me.getY());
+		setSelected(me.getX(), me.getY());
 		if(isSelected)
 		{
 //			System.out.println("press-istrue");//测试用
@@ -153,7 +174,6 @@ class MousePressRelease extends MouseAdapter  {
 		if (isSelected)
 		{
 //			System.out.println("release-istrue");//测试用
-			isSelected = false;
 		}
 		else
 		{
@@ -168,7 +188,7 @@ class MousePressRelease extends MouseAdapter  {
 	@Override
     public void mouseClicked(MouseEvent me){
 		// 单击鼠标
-		isSelected(me.getX(), me.getY());
+		setSelected(me.getX(), me.getY());
 //		System.out.println("鼠标做了一次单击，现在isSelected的值为："+isSelected);//测试用
 	}
 }
@@ -210,7 +230,6 @@ class MouseDragMove extends MouseMotionAdapter {
     	  {
     		  setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
     	  }
-    	  isSelected = false;//消除鼠标单纯移动对是否选中信息的干扰
       }	
 	}
 
